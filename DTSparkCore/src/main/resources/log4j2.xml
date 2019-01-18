@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="error">
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--这个输出控制台的配置-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 日志级别从低到高：
+	            ALL:显示所有日志记录。
+	            TRACE:很低的日志级别一般不会使用。
+	            DEBUG:细粒度信息对调式应用非常有帮助，主要打印一些运行信息。
+	            INFO:粗粒度突出强调应用程序的运行过程，打印感兴趣或者重要的信息。
+	            WARN:表明会出现潜在错误的情形，有些信息不是错误信息，但也要给程序员一些提示。
+	            ERROR:指出虽然发生错误，但不影响运行，打印错误和异常信息，如果不想输出太多日志可以使用该级别。
+	            FATAL:每个严重的错误事件将会导致应用程序的退出，出现错误可以停止程序运行进行调式。
+	            OFF:最高级别，关于所有日志记录。建议使用ERROR、WARN、INFO、DEBUG -->
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） trace-->
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--这个都知道是输出日志的格式-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </Console>
+        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用
+        <File name="log" fileName="log/test.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>-->
+
+        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="RollingFile" fileName="D:/log/query.log" 
+        	filePattern="D:/log/$${date:yyyy-MM-dd HH}/app-%d{MM-dd-yyyy}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="5MB"/>
+        </RollingFile>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--建立一个默认的root的logger-->
+        <root level="WARN">
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>
