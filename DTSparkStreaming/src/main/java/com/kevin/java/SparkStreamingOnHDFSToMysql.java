@@ -1,5 +1,6 @@
 package com.kevin.java;
 
+import com.kevin.java.utils.JDBCWrapper;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.function.FlatMapFunction;

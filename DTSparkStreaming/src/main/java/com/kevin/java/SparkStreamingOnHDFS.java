@@ -16,7 +16,9 @@ import java.util.Arrays;
 /**
  * @author kevin
  * @version 1.0
- * @description spark standalone or Mesos with cluster deploy mode only:
+ * @description     监控HDFS目录，有新增文件则读取
+ *
+ * spark standalone or Mesos with cluster deploy mode only:
  * 在提交application的时候，添加 supervise选项会自动启动一个Driver
  * @createDate 2019/1/16
  */

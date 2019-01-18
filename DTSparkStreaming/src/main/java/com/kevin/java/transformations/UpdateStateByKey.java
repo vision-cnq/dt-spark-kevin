@@ -1,4 +1,4 @@
-package com.kevin.java;
+package com.kevin.java.transformations;
 
 import com.google.common.base.Optional;
 import org.apache.spark.SparkConf;

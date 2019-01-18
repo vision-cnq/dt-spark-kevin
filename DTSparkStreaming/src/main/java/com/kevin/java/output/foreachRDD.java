@@ -1,4 +1,4 @@
-package com.kevin.java;
+package com.kevin.java.output;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;

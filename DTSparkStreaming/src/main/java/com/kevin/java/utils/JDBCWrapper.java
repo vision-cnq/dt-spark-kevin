@@ -1,4 +1,4 @@
-package com.kevin.java;
+package com.kevin.java.utils;
 
 import java.io.Serializable;
 import java.sql.*;

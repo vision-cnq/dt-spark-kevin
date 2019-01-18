@@ -1,4 +1,4 @@
-package com.kevin.java;
+package com.kevin.java.transformations;
 
 import org.apache.spark.JavaFutureActionWrapper;
 import org.apache.spark.SparkConf;
