@@ -18,7 +18,7 @@ public class Filter {
     public static void main(String[] args) {
 
         // 1.创建sparkconf设置作业名称和模式，使用本地模式，最少需要两个线程，一个接收数据，一个处理数据
-        SparkConf conf = new SparkConf().setAppName("Count").setMaster("local[2]");
+        SparkConf conf = new SparkConf().setAppName("Filter").setMaster("local[2]");
         // 2.创建JavaStreamingContext有两种方式（SparkConf，SparkContext），设置等待时间为5秒
         JavaStreamingContext jsc = new JavaStreamingContext(conf, Durations.seconds(5));
         // 3.设置数据源

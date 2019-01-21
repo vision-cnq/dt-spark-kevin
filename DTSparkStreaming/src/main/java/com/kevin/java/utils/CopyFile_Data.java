@@ -1,6 +1,7 @@
 package com.kevin.java.utils;
 
 import java.io.*;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -14,10 +15,11 @@ public class CopyFile_Data {
     public static void main(String[] args) throws InterruptedException, IOException {
         while (true) {
             Thread.sleep(5000);
-            String uuid = UUID.randomUUID().toString();
-            System.out.println(uuid);
+            //String uuid = UUID.randomUUID().toString();
             String file = "DTSparkStreaming\\src\\main\\resources\\";
-            copyFile(new File(file+"words.txt"),new File(file+"data\\"+uuid+"_words.txt"));
+            Date date = new Date();
+            System.out.println(date.getTime());
+            copyFile(new File(file+"words.txt"),new File(file+"data\\"+ date.getTime()+".txt"));
         }
 
     }
