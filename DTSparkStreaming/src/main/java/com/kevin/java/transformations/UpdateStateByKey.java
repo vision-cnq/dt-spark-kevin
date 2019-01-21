@@ -38,7 +38,8 @@ public class UpdateStateByKey {
 
         // 2.基于sparkconf创建JavaStreamingContext，设置接收数据间隔为5秒
         JavaStreamingContext jsc = new JavaStreamingContext(conf, Durations.seconds(5));
-        String checkpointDirectory = "hdfs://Master:9000/sparkstreaming/CheckPointState";
+        //String checkpointDirectory = "hdfs://Master:9000/sparkstreaming/CheckPointState";
+        String checkpointDirectory = "./CheckPointState";
         /**
          * 设置checkpoint目录
          * 多久会将内存中的数据（每一个key所对应的状态）写入到磁盘上一份呢？
@@ -46,6 +47,7 @@ public class UpdateStateByKey {
          * 如果batchInterval大于10s，那么久以batchInterval为准
          * 这样是为了防止频繁的写HDFS
          */
+        // 可以保存到hdfs也可以不保存到hdfs中
         jsc.checkpoint(checkpointDirectory);
 
         // 3.将socket作为数据源，配置节点和端口
@@ -67,7 +69,7 @@ public class UpdateStateByKey {
             }
         });
 
-        //
+        // 6.增量更新，如果是之前有过的key，次数则会累加起来。
         JavaPairDStream<String, Integer> counts = ones.updateStateByKey(new Function2<List<Integer>, Optional<Integer>, Optional<Integer>>() {
 
             // 对相同的key，进行value的累计（包括local和reducer级别的reduce）
@@ -78,16 +80,20 @@ public class UpdateStateByKey {
                  * state：这个key在本次之前之前的状态
                  */
                 Integer updateValue = 0;
+                // 判断state是否有值，有者取出来
                 if (state.isPresent()) {
                     updateValue = state.get();
                 }
+                // 将集合的values遍历与取出来的state值累加
                 for (Integer value : values) {
                     updateValue += value;
                 }
+                // 将累加的值返回
                 return Optional.of(updateValue);
             }
         });
 
+        // 会一直打印之前统计的结果数据，应该设置了checkpoint
         // 打印结果数据
         counts.print();
 
