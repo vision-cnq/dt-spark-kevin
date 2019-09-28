@@ -1,0 +1,66 @@
+<configuration>
+	<property>
+	  <name>hive.hwi.war.file</name>
+	  <value>lib/hive-hwi-1.2.1.war</value>
+	  <description>This sets the path to the HWI war file, relative to ${HIVE_HOME}. </description>
+	</property>
+	<property>
+	  <name>hive.metastore.uris</name>
+	  <value>thrift://Slave1:9083</value>
+	</property>
+        <property>
+	  <name>javax.jdo.option.ConnectionURL</name>
+	  <value>jdbc:mysql://Slave1:3306/hive?createDatabaseIfNotExist=true</value>
+	  <description>JDBC connect string for a JDBC metastore</description>
+	</property>
+	<property>
+	  <name>javax.jdo.option.ConnectionDriverName</name>
+	  <value>com.mysql.jdbc.Driver</value>
+	  <description>Driver class name for a JDBC metastore</description>
+	</property>
+	<property>
+	  <name>javax.jdo.option.ConnectionUserName</name>
+	  <value>root</value>
+	  <description>username to use against metastore database</description>
+	</property>
+	<property>
+	  <name>javax.jdo.option.ConnectionPassword</name>
+	  <value>nanqing</value>
+	  <description>password to use against metastore database</description>
+	</property>
+	<property>
+	  <name>datanucleus.readOnlyDatastore</name>
+          <value>false</value>
+    	</property>
+    	<property> 
+          <name>datanucleus.fixedDatastore</name>
+          <value>false</value> 
+    	</property>
+    	<property> 
+          <name>datanucleus.autoCreateSchema</name> 
+          <value>true</value> 
+    	</property>
+    	<property>
+          <name>datanucleus.autoCreateTables</name>
+          <value>true</value>
+    	</property>
+    	<property>
+          <name>datanucleus.autoCreateColumns</name>
+          <value>true</value>
+    	</property>
+    	<property>
+          <name>hive.exec.local.scratchdir</name>
+          <value>/home/grid/apache-hive-1.2.1-bin/iotmp</value>
+          <description>Local scratch space for Hive jobs</description>
+     	</property>
+    	 <property>
+          <name>hive.querylog.location</name>
+          <value>/home/grid/apache-hive-1.2.1-bin/iotmp/</value>
+          <description>Location of Hive run time structured log file</description>
+     	</property>
+      	<property>
+          <name>hive.downloaded.resources.dir</name>
+          <value>/home/grid/apache-hive-1.2.1-bin/iotmp/</value>
+          <description>Temporary local directory for added resources in the remote file system.</description>
+     	</property>
+</configuration>	

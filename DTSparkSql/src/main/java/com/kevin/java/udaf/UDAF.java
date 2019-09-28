@@ -1,4 +1,4 @@
-package com.kevin.java.udf_udaf;
+package com.kevin.java.udaf;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;

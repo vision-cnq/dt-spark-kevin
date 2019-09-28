@@ -29,8 +29,8 @@ public class DataFrameHive {
          * 4.初始化HiveContext
          * 5.打包运行
          *
-         * ./bin/spark-submit --master yarn-cluster --class com.huangyueran.spark.sql.HiveDataSource /root/spark_hive_datasource.jar
-         * ./bin/spark-submit --master yarn-client --class com.huangyueran.spark.sql.HiveDataSource /root/spark_hive_datasource.jar
+         * ./bin/spark-submit --master yarn-cluster --class com.kevin.java.dataframe.DataFrameHive /root/DTSparkSql.jar
+         * ./bin/spark-submit --master yarn-client --class com.kevin.java.dataframe.DataFrameHive /root/DTSparkSql.jar
          */
         // 如果不设置master，则无法在本地运行，需要打包在集群运行
         SparkConf conf = new SparkConf().setAppName("DataFrameHive").setMaster("local");

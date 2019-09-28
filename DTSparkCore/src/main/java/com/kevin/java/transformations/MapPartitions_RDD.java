@@ -22,12 +22,12 @@ import java.util.List;
  *   SparkSql或DataFrame默认会对程序进行mapPartition的优化。
  * @createDate 2018/12/30
  */
-public class MapParttions_RDD {
+public class MapPartitions_RDD {
 
     public static void main(String[] args) {
 
         // 1.创建SparkConf，设置作业名称和模式
-        SparkConf conf = new SparkConf().setAppName("MapParttions_RDD").setMaster("local");
+        SparkConf conf = new SparkConf().setAppName("MapPartitions_RDD").setMaster("local");
 
         // 2.基于Sparkconf对象创建一个SparkContext上下文，它是通往集群的唯一通道，且在创建时会创建任务调度器
         JavaSparkContext sc = new JavaSparkContext(conf);

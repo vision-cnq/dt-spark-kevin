@@ -26,7 +26,7 @@ public class Parallelize_RDD {
 
         List<String> list = Arrays.asList("Java", "scala", "Python", "Java");
 
-        // 3.去重
+        // 3.parallelize将集合转成rdd
         JavaRDD<String> parallelize = sc.parallelize(list);
 
         // 4.遍历

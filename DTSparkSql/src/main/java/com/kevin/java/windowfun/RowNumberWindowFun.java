@@ -1,4 +1,4 @@
-package com.kevin.java.windowFun;
+package com.kevin.java.windowfun;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
