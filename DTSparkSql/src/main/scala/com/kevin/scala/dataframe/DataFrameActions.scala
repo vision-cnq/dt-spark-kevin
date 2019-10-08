@@ -20,7 +20,7 @@ object DataFrameActions {
     import sqlContext.implicits._
     val file = "DTSparkSql\\src\\main\\resources\\person.txt"
     // 5.textFile读取文件数据,map用逗号切分数据,再map将数据类型转成Person。注：Person需要使用单列对象 case class，才能使用toDF转成DataFrame类型
-    val df = sc.textFile(file).map(_.split(",")).map(p => Person1(p(0), p(1), p(2).trim.toInt)).toDF()
+    val df = sc.textFile(file).map(_.split(",")).map(p => Person(p(0), p(1), p(2).trim.toInt)).toDF()
 
     // 6.查看所有数据，默认前20行
     df.show()
@@ -66,4 +66,4 @@ object DataFrameActions {
 
 }
 
-case class Person1(id:String,name: String, age: Int)
+case class Person(id:String,name: String, age: Int)

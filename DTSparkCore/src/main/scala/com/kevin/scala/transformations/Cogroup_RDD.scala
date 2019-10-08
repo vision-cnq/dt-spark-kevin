@@ -28,8 +28,6 @@ object Cogroup_RDD {
     // 9.关闭sc
     sc.stop()
 
-
-
   }
 
 }
