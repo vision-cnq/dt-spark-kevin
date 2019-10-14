@@ -21,7 +21,7 @@
 		<module>DTSparkCore</module>
         <module>DTSparkSql</module>
         <module>DTSparkStreaming</module>
-        <module>DTSparkMlib</module>
+        <module>DTSparkMLlib</module>
     </modules>
 
     <!--<dependencies>
