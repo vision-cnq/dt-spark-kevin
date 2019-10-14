@@ -18,15 +18,13 @@ object LinearRegression {
     Logger.getRootLogger.setLevel(Level.WARN)
 
     // 读取样本数据
-//    val data_path = "DTSparkMLlib\\src\\main\\resources\\lpsa.data"
-    val data_path = "lpsa.data"
+    val data_path = "DTSparkMLlib\\src\\main\\resources\\lpsa.data"
     val data = sc.textFile(data_path)
-    val examples = data.map(line => {
-      val parts = line.split(",")
-      val y = parts(0)  // y，有y则是监督训练数据，没有y是无监督
-      val xs = parts(1) // 维度
-      LabeledPoint(parts(0).toDouble,Vectors.dense(parts(1).split(" ").map(_.toDouble)))
-    })
+    val examples = data.map{line =>
+      val parts = line.split(',')
+      // val y = parts(0),有y则是监督训练数据，没有y是无监督。parts(1)维度
+      LabeledPoint(parts(0).toDouble,Vectors.dense(parts(1).split(' ').map(_.toDouble)))
+    }
 
     // 将rdd数据分成0.8(训练集)一份，0.2(测试集)一份，种子1是固定分配
     val train2TestData = examples.randomSplit(Array(0.8,0.2),1)
@@ -37,7 +35,7 @@ object LinearRegression {
       *     1.error值小于用户指定的error值
       *     2.达到一定的迭代次数
       */
-    val numIterations = 100
+    val numIterations = 1000
     // 在每次迭代的过程中，梯度下降算法的下降步长大小 0.1,0.2,0.3,0.4
     val stepSize = 1
 
@@ -86,8 +84,9 @@ object LinearRegression {
     //    val model_path = "model"
     //    model.save(sc,model_path)
     //    val same_model = LinearRegressionModel.load(model_path)
-    sc.stop()
 
+    // 关闭
+    sc.stop()
 
   }
 
