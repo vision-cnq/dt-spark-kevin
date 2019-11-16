@@ -18,8 +18,6 @@ object ReduceByKey_RDD {
     // 4.关闭sc
     sc.stop()
 
-
-
   }
 
 }

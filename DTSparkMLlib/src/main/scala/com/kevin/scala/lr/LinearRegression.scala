@@ -1,4 +1,4 @@
-package com.kevin.scala
+package com.kevin.scala.lr
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.mllib.linalg.Vectors
@@ -6,7 +6,7 @@ import org.apache.spark.mllib.regression.{LabeledPoint, LinearRegressionWithSGD}
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * 线性回归
+  * 简单线性回归
   */
 object LinearRegression {
 
@@ -24,7 +24,7 @@ object LinearRegression {
       val parts = line.split(',')
       // val y = parts(0),有y则是监督训练数据，没有y是无监督。parts(1)维度
       LabeledPoint(parts(0).toDouble,Vectors.dense(parts(1).split(' ').map(_.toDouble)))
-    }
+    }.cache()
 
     // 将rdd数据分成0.8(训练集)一份，0.2(测试集)一份，种子1是固定分配
     val train2TestData = examples.randomSplit(Array(0.8,0.2),1)
@@ -35,7 +35,7 @@ object LinearRegression {
       *     1.error值小于用户指定的error值
       *     2.达到一定的迭代次数
       */
-    val numIterations = 1000
+    val numIterations = 100
     // 在每次迭代的过程中，梯度下降算法的下降步长大小 0.1,0.2,0.3,0.4
     val stepSize = 1
 
