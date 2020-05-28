@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kevin.spark</groupId>
-    <artifactId>DTSpark</artifactId>
+    <artifactId>dt-spark-kevin</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -18,10 +18,10 @@
     </properties>
 	
 	<modules>
-		<module>DTSparkCore</module>
-        <module>DTSparkSql</module>
-        <module>DTSparkStreaming</module>
-        <module>DTSparkMLlib</module>
+		<module>dt-spark-core</module>
+        <module>dt-spark-sql</module>
+        <module>dt-spark-streaming</module>
+        <module>dt-spark-mllib</module>
     </modules>
 
     <dependencies>

@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>DTSpark</artifactId>
+        <artifactId>com.kevin.spark</artifactId>
         <groupId>com.kevin.spark</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>DTSparkStreaming</artifactId>
+    <artifactId>dt-spark-streaming</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
